@@ -5,3 +5,8 @@
 		min-height: 400px;
 	}
 }
+@media screen and (max-width : 436px){
+	.big-image{
+		min-height: 500px;
+	}
+}

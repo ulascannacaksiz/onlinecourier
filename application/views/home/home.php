@@ -67,9 +67,8 @@
 			<div class="position-absolute col-md-12 px-5 pt-3" style="left:0; top:0;">
 				<div class="row">
 					<div class="col-md-6 p-4">
-						<h1 class="display-4 text-break" style="color : #333c4e;">60 Dakikada</h1>
-						<h1 class="display-4 text-break" style="color : #333c4e;">Teslimat</h1>
-
+						<h1 class="display-4" style="color : #333c4e;">60 Dakikada</h1>
+						<h1 class="display-4" style="color : #333c4e;">Teslimat</h1>
 					</div>
 					<div class="offset-md-1 col-md-5 bg-light p-4 rounded shadow ">
 						<form>
@@ -100,23 +99,23 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12 position-relative">
+		<div class="col-md-12">
 			<div class="row text-center">
 				<div class="col-md-3 ">
 					<img src="<?php echo base_url("assets/dist/img/car.svg"); ?>" class="w-50">
-					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Arabalı Kurye Çağır</button>
+					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Arabalı Kurye</button>
 				</div>
 				<div class="col-md-3">
 					<img src="<?php echo base_url("assets/dist/img/motorbike.svg"); ?>" class="w-50">
-					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Motor Kurye Çağır</button>
+					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Motor Kurye</button>
 				</div>
 				<div class="col-md-3">
 					<img src="<?php echo base_url("assets/dist/img/walk.svg"); ?>" class="w-50">
-					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Yaya Kurye Çağır</button>
+					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Yaya Kurye</button>
 				</div>
 				<div class="col-md-3">
 					<img src="<?php echo base_url("assets/dist/img/truck.png"); ?>" class="w-50">
-					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Kamyon Kurye Çağır</button>
+					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Kamyon Kurye</button>
 				</div>
 			</div>
 		</div>
