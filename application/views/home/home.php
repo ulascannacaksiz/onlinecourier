@@ -64,31 +64,39 @@
 
 		<div class="col-md-12 position-relative">
 			<img src="<?php echo base_url("assets/dist/img/header-promo.svg"); ?>" alt="" class="w-100 big-image">
-			<div class="position-absolute col-md-4" style="left:0; top:0;">
-				<div class="col-md-12 bg-light p-4 rounded shadow ">
-					<form>
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+			<div class="position-absolute col-md-12 px-5 pt-3" style="left:0; top:0;">
+				<div class="row">
+					<div class="col-md-6 p-4">
+						<h1 class="display-4 text-break" style="color : #333c4e;">60 Dakikada</h1>
+						<h1 class="display-4 text-break" style="color : #333c4e;">Teslimat</h1>
+
+					</div>
+					<div class="offset-md-1 col-md-5 bg-light p-4 rounded shadow ">
+						<form>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+								</div>
+								<input type="text" list="city-from" class="form-control" placeholder="Çıkış Şehiri ...">
+								<datalist name="city-from" id="city-from">
+									<option>Istanbul</option>
+								</datalist>
 							</div>
-							<input type="text" list="city-from" class="form-control" placeholder="Çıkış Şehiri ...">
-							<datalist name="city-from" id="city-from">
-								<option>Istanbul</option>
-							</datalist>
-						</div>
-						<div class="input-group pt-2">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+							<div class="input-group pt-2">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+								</div>
+								<input type="text" list="city-to" class="form-control" placeholder="Varış Şehiri ...">
+								<datalist name="city-to" id="city-to">
+									<option>Istanbul</option>
+								</datalist>
 							</div>
-							<input type="text" list="city-to" class="form-control" placeholder="Varış Şehiri ...">
-							<datalist name="city-to" id="city-to">
-								<option>Istanbul</option>
-							</datalist>
-						</div>
-						<div class="input-group pt-2">
-							<button class="btn btn-primary col-md-12">Kurye Çağır</button>
-						</div>
-					</form>
+							<div class="input-group pt-2">
+								<button class="btn btn-primary col-md-12">Kurye Çağır</button>
+							</div>
+						</form>
+					</div>
+
 				</div>
 			</div>
 		</div>
