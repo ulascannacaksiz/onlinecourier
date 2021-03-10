@@ -1,5 +1,5 @@
 <?php
-class Courier extends MY_Controller{
+class Ordercourier extends MY_Controller{
 	public function __construct()
 	{
 		parent::__construct();
