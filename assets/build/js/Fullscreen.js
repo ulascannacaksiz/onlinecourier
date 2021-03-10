@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------
- * AdminLTE Fullscreen.js
+ * AdminLTE Fullscreen.css
  * License MIT
  * --------------------------------------------
  */

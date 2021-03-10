@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------
- * AdminLTE ControlSidebar.js
+ * AdminLTE ControlSidebar.css
  * License MIT
  * --------------------------------------------
  */

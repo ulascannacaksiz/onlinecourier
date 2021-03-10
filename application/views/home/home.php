@@ -71,13 +71,19 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Çıkış Adresi ...">
+							<input type="text" list="city-from" class="form-control" placeholder="Çıkış Şehiri ...">
+							<datalist name="city-from" id="city-from">
+								<option>Istanbul</option>
+							</datalist>
 						</div>
 						<div class="input-group pt-2">
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
 							</div>
-							<input type="text" class="form-control" placeholder="Varış Adresi ...">
+							<input type="text" list="city-to" class="form-control" placeholder="Varış Şehiri ...">
+							<datalist name="city-to" id="city-to">
+								<option>Istanbul</option>
+							</datalist>
 						</div>
 						<div class="input-group pt-2">
 							<button class="btn btn-primary col-md-12">Kurye Çağır</button>

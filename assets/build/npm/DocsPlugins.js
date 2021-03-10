@@ -7,8 +7,8 @@ const Plugins = [
     to: 'docs/assets/css/'
   },
   {
-    from: 'dist/js/',
-    to: 'docs/assets/js/'
+    from: 'dist/css/',
+    to: 'docs/assets/css/'
   },
   // jQuery
   {
@@ -17,13 +17,13 @@ const Plugins = [
   },
   // Popper
   {
-    from: 'node_modules/popper.js/dist/',
+    from: 'node_modules/popper.css/dist/',
     to: 'docs/assets/plugins/popper/'
   },
   // Bootstrap
   {
-    from: 'node_modules/bootstrap/dist/js/',
-    to: 'docs/assets/plugins/bootstrap/js/'
+    from: 'node_modules/bootstrap/dist/css/',
+    to: 'docs/assets/plugins/bootstrap/css/'
   },
   // Font Awesome
   {
@@ -36,8 +36,8 @@ const Plugins = [
   },
   // overlayScrollbars
   {
-    from: 'node_modules/overlayscrollbars/js/',
-    to: 'docs/assets/plugins/overlayScrollbars/js/'
+    from: 'node_modules/overlayscrollbars/css/',
+    to: 'docs/assets/plugins/overlayScrollbars/css/'
   },
   {
     from: 'node_modules/overlayscrollbars/css/',

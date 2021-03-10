@@ -8,13 +8,13 @@ const Plugins = [
   },
   // Popper
   {
-    from: 'node_modules/popper.js/dist',
+    from: 'node_modules/popper.css/dist',
     to: 'plugins/popper'
   },
   // Bootstrap
   {
-    from: 'node_modules/bootstrap/dist/js',
-    to: 'plugins/bootstrap/js'
+    from: 'node_modules/bootstrap/dist/css',
+    to: 'plugins/bootstrap/css'
   },
   // Font Awesome
   {
@@ -27,17 +27,17 @@ const Plugins = [
   },
   // overlayScrollbars
   {
-    from: 'node_modules/overlayscrollbars/js',
-    to: 'plugins/overlayScrollbars/js'
+    from: 'node_modules/overlayscrollbars/css',
+    to: 'plugins/overlayScrollbars/css'
   },
   {
     from: 'node_modules/overlayscrollbars/css',
     to: 'plugins/overlayScrollbars/css'
   },
-  // Chart.js
+  // Chart.css
   {
-    from: 'node_modules/chart.js/dist/',
-    to: 'plugins/chart.js'
+    from: 'node_modules/chart.css/dist/',
+    to: 'plugins/chart.css'
   },
   // jQuery UI
   {
@@ -69,8 +69,8 @@ const Plugins = [
   },
   // Bootstrap Colorpicker
   {
-    from: 'node_modules/bootstrap-colorpicker/dist/js',
-    to: 'plugins/bootstrap-colorpicker/js'
+    from: 'node_modules/bootstrap-colorpicker/dist/css',
+    to: 'plugins/bootstrap-colorpicker/css'
   },
   {
     from: 'node_modules/bootstrap-colorpicker/dist/css',
@@ -78,8 +78,8 @@ const Plugins = [
   },
   // Tempusdominus Bootstrap 4
   {
-    from: 'node_modules/tempusdominus-bootstrap-4/build/js',
-    to: 'plugins/tempusdominus-bootstrap-4/js'
+    from: 'node_modules/tempusdominus-bootstrap-4/build/css',
+    to: 'plugins/tempusdominus-bootstrap-4/css'
   },
   {
     from: 'node_modules/tempusdominus-bootstrap-4/build/css',
@@ -114,156 +114,156 @@ const Plugins = [
     to: 'plugins/jszip'
   },
   {
-    from: 'node_modules/datatables.net/js',
+    from: 'node_modules/datatables.net/css',
     to: 'plugins/datatables'
-  },
-  {
-    from: 'node_modules/datatables.net-bs4/js',
-    to: 'plugins/datatables-bs4/js'
   },
   {
     from: 'node_modules/datatables.net-bs4/css',
     to: 'plugins/datatables-bs4/css'
   },
   {
-    from: 'node_modules/datatables.net-autofill/js',
-    to: 'plugins/datatables-autofill/js'
+    from: 'node_modules/datatables.net-bs4/css',
+    to: 'plugins/datatables-bs4/css'
   },
   {
-    from: 'node_modules/datatables.net-autofill-bs4/js',
-    to: 'plugins/datatables-autofill/js'
+    from: 'node_modules/datatables.net-autofill/css',
+    to: 'plugins/datatables-autofill/css'
   },
   {
     from: 'node_modules/datatables.net-autofill-bs4/css',
     to: 'plugins/datatables-autofill/css'
   },
   {
-    from: 'node_modules/datatables.net-buttons/js',
-    to: 'plugins/datatables-buttons/js'
+    from: 'node_modules/datatables.net-autofill-bs4/css',
+    to: 'plugins/datatables-autofill/css'
   },
   {
-    from: 'node_modules/datatables.net-buttons-bs4/js',
-    to: 'plugins/datatables-buttons/js'
+    from: 'node_modules/datatables.net-buttons/css',
+    to: 'plugins/datatables-buttons/css'
   },
   {
     from: 'node_modules/datatables.net-buttons-bs4/css',
     to: 'plugins/datatables-buttons/css'
   },
   {
-    from: 'node_modules/datatables.net-colreorder/js',
-    to: 'plugins/datatables-colreorder/js'
+    from: 'node_modules/datatables.net-buttons-bs4/css',
+    to: 'plugins/datatables-buttons/css'
   },
   {
-    from: 'node_modules/datatables.net-colreorder-bs4/js',
-    to: 'plugins/datatables-colreorder/js'
+    from: 'node_modules/datatables.net-colreorder/css',
+    to: 'plugins/datatables-colreorder/css'
   },
   {
     from: 'node_modules/datatables.net-colreorder-bs4/css',
     to: 'plugins/datatables-colreorder/css'
   },
   {
-    from: 'node_modules/datatables.net-fixedcolumns/js',
-    to: 'plugins/datatables-fixedcolumns/js'
+    from: 'node_modules/datatables.net-colreorder-bs4/css',
+    to: 'plugins/datatables-colreorder/css'
   },
   {
-    from: 'node_modules/datatables.net-fixedcolumns-bs4/js',
-    to: 'plugins/datatables-fixedcolumns/js'
+    from: 'node_modules/datatables.net-fixedcolumns/css',
+    to: 'plugins/datatables-fixedcolumns/css'
   },
   {
     from: 'node_modules/datatables.net-fixedcolumns-bs4/css',
     to: 'plugins/datatables-fixedcolumns/css'
   },
   {
-    from: 'node_modules/datatables.net-fixedheader/js',
-    to: 'plugins/datatables-fixedheader/js'
+    from: 'node_modules/datatables.net-fixedcolumns-bs4/css',
+    to: 'plugins/datatables-fixedcolumns/css'
   },
   {
-    from: 'node_modules/datatables.net-fixedheader-bs4/js',
-    to: 'plugins/datatables-fixedheader/js'
+    from: 'node_modules/datatables.net-fixedheader/css',
+    to: 'plugins/datatables-fixedheader/css'
   },
   {
     from: 'node_modules/datatables.net-fixedheader-bs4/css',
     to: 'plugins/datatables-fixedheader/css'
   },
   {
-    from: 'node_modules/datatables.net-keytable/js',
-    to: 'plugins/datatables-keytable/js'
+    from: 'node_modules/datatables.net-fixedheader-bs4/css',
+    to: 'plugins/datatables-fixedheader/css'
   },
   {
-    from: 'node_modules/datatables.net-keytable-bs4/js',
-    to: 'plugins/datatables-keytable/js'
+    from: 'node_modules/datatables.net-keytable/css',
+    to: 'plugins/datatables-keytable/css'
   },
   {
     from: 'node_modules/datatables.net-keytable-bs4/css',
     to: 'plugins/datatables-keytable/css'
   },
   {
-    from: 'node_modules/datatables.net-responsive/js',
-    to: 'plugins/datatables-responsive/js'
+    from: 'node_modules/datatables.net-keytable-bs4/css',
+    to: 'plugins/datatables-keytable/css'
   },
   {
-    from: 'node_modules/datatables.net-responsive-bs4/js',
-    to: 'plugins/datatables-responsive/js'
+    from: 'node_modules/datatables.net-responsive/css',
+    to: 'plugins/datatables-responsive/css'
   },
   {
     from: 'node_modules/datatables.net-responsive-bs4/css',
     to: 'plugins/datatables-responsive/css'
   },
   {
-    from: 'node_modules/datatables.net-rowgroup/js',
-    to: 'plugins/datatables-rowgroup/js'
+    from: 'node_modules/datatables.net-responsive-bs4/css',
+    to: 'plugins/datatables-responsive/css'
   },
   {
-    from: 'node_modules/datatables.net-rowgroup-bs4/js',
-    to: 'plugins/datatables-rowgroup/js'
+    from: 'node_modules/datatables.net-rowgroup/css',
+    to: 'plugins/datatables-rowgroup/css'
   },
   {
     from: 'node_modules/datatables.net-rowgroup-bs4/css',
     to: 'plugins/datatables-rowgroup/css'
   },
   {
-    from: 'node_modules/datatables.net-rowreorder/js',
-    to: 'plugins/datatables-rowreorder/js'
+    from: 'node_modules/datatables.net-rowgroup-bs4/css',
+    to: 'plugins/datatables-rowgroup/css'
   },
   {
-    from: 'node_modules/datatables.net-rowreorder-bs4/js',
-    to: 'plugins/datatables-rowreorder/js'
+    from: 'node_modules/datatables.net-rowreorder/css',
+    to: 'plugins/datatables-rowreorder/css'
   },
   {
     from: 'node_modules/datatables.net-rowreorder-bs4/css',
     to: 'plugins/datatables-rowreorder/css'
   },
   {
-    from: 'node_modules/datatables.net-scroller/js',
-    to: 'plugins/datatables-scroller/js'
+    from: 'node_modules/datatables.net-rowreorder-bs4/css',
+    to: 'plugins/datatables-rowreorder/css'
   },
   {
-    from: 'node_modules/datatables.net-scroller-bs4/js',
-    to: 'plugins/datatables-scroller/js'
+    from: 'node_modules/datatables.net-scroller/css',
+    to: 'plugins/datatables-scroller/css'
   },
   {
     from: 'node_modules/datatables.net-scroller-bs4/css',
     to: 'plugins/datatables-scroller/css'
   },
   {
-    from: 'node_modules/datatables.net-searchpanes/js',
-    to: 'plugins/datatables-searchpanes/js'
+    from: 'node_modules/datatables.net-scroller-bs4/css',
+    to: 'plugins/datatables-scroller/css'
   },
   {
-    from: 'node_modules/datatables.net-searchpanes-bs4/js',
-    to: 'plugins/datatables-searchpanes/js'
+    from: 'node_modules/datatables.net-searchpanes/css',
+    to: 'plugins/datatables-searchpanes/css'
   },
   {
     from: 'node_modules/datatables.net-searchpanes-bs4/css',
     to: 'plugins/datatables-searchpanes/css'
   },
   {
-    from: 'node_modules/datatables.net-select/js',
-    to: 'plugins/datatables-select/js'
+    from: 'node_modules/datatables.net-searchpanes-bs4/css',
+    to: 'plugins/datatables-searchpanes/css'
   },
   {
-    from: 'node_modules/datatables.net-select-bs4/js',
-    to: 'plugins/datatables-select/js'
+    from: 'node_modules/datatables.net-select/css',
+    to: 'plugins/datatables-select/css'
+  },
+  {
+    from: 'node_modules/datatables.net-select-bs4/css',
+    to: 'plugins/datatables-select/css'
   },
   {
     from: 'node_modules/datatables.net-select-bs4/css',
@@ -297,7 +297,7 @@ const Plugins = [
   },
   // jQuery Mapael
   {
-    from: 'node_modules/jquery-mapael/js/',
+    from: 'node_modules/jquery-mapael/css/',
     to: 'plugins/jquery-mapael'
   },
   // Raphael
@@ -354,8 +354,8 @@ const Plugins = [
     to: 'plugins/jsgrid'
   },
   {
-    from: 'node_modules/jsgrid/demos/db.js',
-    to: 'plugins/jsgrid/demos/db.js'
+    from: 'node_modules/jsgrid/demos/db.css',
+    to: 'plugins/jsgrid/demos/db.css'
   },
   // flag-icon-css
   {

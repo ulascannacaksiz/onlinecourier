@@ -3945,7 +3945,7 @@
     /**
      * Callback called when the popper is created.<br />
      * By default, it is set to no-op.<br />
-     * Role Popper.js instance with `data.instance`.
+     * Access Popper.js instance with `data.instance`.
      * @prop {onCreate}
      */
     onCreate: function onCreate() {},
@@ -3955,7 +3955,7 @@
      * on the initialization/creation of the popper, but only on subsequent
      * updates.<br />
      * By default, it is set to no-op.<br />
-     * Role Popper.js instance with `data.instance`.
+     * Access Popper.js instance with `data.instance`.
      * @prop {onUpdate}
      */
     onUpdate: function onUpdate() {},

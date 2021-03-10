@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------
- * AdminLTE CardRefresh.js
+ * AdminLTE CardRefresh.css
  * License MIT
  * --------------------------------------------
  */

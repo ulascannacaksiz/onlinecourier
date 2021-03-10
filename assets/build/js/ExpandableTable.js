@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------
- * AdminLTE ExpandableTable.js
+ * AdminLTE ExpandableTable.css
  * License MIT
  * --------------------------------------------
  */

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------
- * AdminLTE SidebarSearch.js
+ * AdminLTE SidebarSearch.css
  * License MIT
  * --------------------------------------------
  */

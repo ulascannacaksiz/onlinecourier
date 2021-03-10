@@ -24,7 +24,8 @@ class Home extends MY_Controller
 		);
 
 		$this->data[CUSTOM_STYLES] = array(
-			base_url() . "assets/dist/css/home.css"
+			base_url() . "assets/dist/css/home.css",
+			base_url() . "assets/dist/css/footer.css"
 		);
 
 		$this->data[MASTER_PAGES] = array(
@@ -45,7 +46,7 @@ class Home extends MY_Controller
 		);
 
 		$this->data[CUSTOM_SCRIPTS] = array(
-
+			"home/assets/js/homescripts" => array()
 		);
 	}
 }

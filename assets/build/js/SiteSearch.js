@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------
- * AdminLTE SiteSearch.js
+ * AdminLTE SiteSearch.css
  * License MIT
  * --------------------------------------------
  */

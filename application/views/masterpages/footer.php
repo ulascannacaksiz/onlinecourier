@@ -1,5 +1,4 @@
-
-<footer class="main-footer">
+<footer class="main-footer text-center">
 	<!-- To the right -->
 	<div class="float-right d-none d-sm-inline">
 

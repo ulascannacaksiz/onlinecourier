@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------
- * AdminLTE DirectChat.js
+ * AdminLTE DirectChat.css
  * License MIT
  * --------------------------------------------
  */

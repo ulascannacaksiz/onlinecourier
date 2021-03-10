@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------
- * AdminLTE CardWidget.js
+ * AdminLTE CardWidget.css
  * License MIT
  * --------------------------------------------
  */
