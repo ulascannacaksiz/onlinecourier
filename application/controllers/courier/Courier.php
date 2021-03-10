@@ -1,16 +1,13 @@
 <?php
-
-class Home extends MY_Controller
-{
+class Courier extends MY_Controller{
 	public function __construct()
 	{
 		parent::__construct();
 		$this->onLoad();
 	}
 
-	public function index()
-	{
-		$this->data[MASTER_PAGES]["home/home"] = array();
+	public function index(){
+		$this->data[MASTER_PAGES]["courier/ordercourier"] = array();
 		$this->load->view("layout",$this->data);
 	}
 
@@ -45,7 +42,9 @@ class Home extends MY_Controller
 		);
 
 		$this->data[CUSTOM_SCRIPTS] = array(
+			"courier/assets/js/ordercourierscripts" => array()
 
 		);
 	}
+
 }
