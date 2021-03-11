@@ -28,13 +28,13 @@
 				</div>
 				<div class="d-flex justify-content-center">
 					<div class="mx-2">
-						<button class="btn btn-outline-success btn-md" id="carbtn">Araba</button>
+						<button class="btn btn-outline-success btn-md" id="carbtn"><i class="fas fa-car-side"></i> Araba</button>
 					</div>
 					<div class="mx-2">
-						<button class="btn btn-outline-success btn-md" id="motorbtn">Motor</button>
+						<button class="btn btn-outline-success btn-md" id="motorbtn"><i class="fas fa-motorcycle"></i> Motor</button>
 					</div>
 					<div class="mx-2">
-						<button class="btn btn-outline-success btn-md" id="truckbtn">Kamyon</button>
+						<button class="btn btn-outline-success btn-md" id="truckbtn"><i class="fas fa-truck"></i> Kamyon</button>
 					</div>
 
 				</div>

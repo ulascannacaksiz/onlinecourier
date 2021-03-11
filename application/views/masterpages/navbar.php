@@ -5,7 +5,7 @@
 
 	<ul class="navbar-nav ml-auto">
 		<li class="nav-item">
-			<button class="nav-link btn btn-outline-primary" >Kurye Çağır</button>
+			<button class="nav-link btn btn-outline-primary" ><i class="fas fa-people-carry"></i> Hemen Gönder !</button>
 		</li>
 	</ul>
 </nav>
