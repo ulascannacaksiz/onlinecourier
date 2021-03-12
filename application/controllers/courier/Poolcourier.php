@@ -11,7 +11,7 @@ class Poolcourier extends MY_Controller{
 		$this->load->view("layout",$this->data);
 	}
 
-	public  function getCargoDatafromApi(){
+	public function getDataTableResultfromApi(){
 		$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
 		$this->curly->get($url);
 		$response = $this->curly->getResponse();

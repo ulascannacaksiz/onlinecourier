@@ -48,7 +48,6 @@ class Ordercourier extends MY_Controller{
 
 		$this->data[CUSTOM_SCRIPTS] = array(
 			"courier/assets/js/ordercourierscripts" => array()
-
 		);
 	}
 

@@ -11,95 +11,39 @@
  Target Server Version : 100417
  File Encoding         : 65001
 
- Date: 09/03/2021 18:33:29
+ Date: 11/03/2021 14:35:26
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for category
+-- Table structure for cargo
 -- ----------------------------
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE `category`  (
-  `category_id` int NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `category_row_status` tinyint(1) NULL DEFAULT NULL,
-  `category_is_active` tinyint(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`category_id`) USING BTREE
+DROP TABLE IF EXISTS `cargo`;
+CREATE TABLE `cargo`  (
+  `cargo_id` int NOT NULL AUTO_INCREMENT,
+  `cargo_user_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cargo_description` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cargo_weight` int NULL DEFAULT NULL,
+  `cargo_weight_unit` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cargo_volume` int NULL DEFAULT NULL,
+  `cargo_price` decimal(10, 2) NULL DEFAULT NULL,
+  `cargo_address_to` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cargo_name_to` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cargo_surname_to` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cargo_phone_num_to` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cargo_status` tinyint(1) NULL DEFAULT NULL,
+  `cargo_delivery_time` datetime NULL DEFAULT NULL,
+  `cargo_packet_time` datetime NULL DEFAULT NULL,
+  `cargo_vehicle_id` int NULL DEFAULT NULL,
+  `cargo_payment_id` int NULL DEFAULT NULL,
+  `cargo_row_status` int NULL DEFAULT NULL,
+  PRIMARY KEY (`cargo_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of category
--- ----------------------------
-
--- ----------------------------
--- Table structure for courier
--- ----------------------------
-DROP TABLE IF EXISTS `courier`;
-CREATE TABLE `courier`  (
-  `courier_id` int NOT NULL AUTO_INCREMENT,
-  `courier_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `courier_vehicle_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `courier_row_status` tinyint(1) NULL DEFAULT NULL,
-  `courier_is_active` tinyint(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`courier_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of courier
--- ----------------------------
-
--- ----------------------------
--- Table structure for customer
--- ----------------------------
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE `customer`  (
-  `customer_id` int NOT NULL AUTO_INCREMENT,
-  `customer_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `customer_surname` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `customer_email` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `customer_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `customer_city` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `customer_phone_num` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `customer_created_time` datetime NULL DEFAULT NULL,
-  `customer_row_status` tinyint(1) NULL DEFAULT NULL,
-  `customer_is_active` tinyint(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`customer_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of customer
--- ----------------------------
-
--- ----------------------------
--- Table structure for order
--- ----------------------------
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order`  (
-  `order_id` int NOT NULL AUTO_INCREMENT,
-  `order_product_id` int NULL DEFAULT NULL,
-  `order_customer_id` int NULL DEFAULT NULL,
-  `order_courier_id` int NULL DEFAULT NULL,
-  `order_payment_id` int NULL DEFAULT NULL,
-  `order_name_to` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `order_surname_to` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `order_email_to` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `order_phone_num_to` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `order_city_to` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `order_address_to` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `order_created_time` datetime NULL DEFAULT NULL,
-  `order_date_time` datetime NULL DEFAULT NULL,
-  `order_courier_checkout_time` datetime NULL DEFAULT NULL,
-  `order_courier_delivery_time` datetime NULL DEFAULT NULL,
-  `order_bill_blob` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `order_row_status` tinyint(1) NULL DEFAULT NULL,
-  `order_is_active` tinyint(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of order
+-- Records of cargo
 -- ----------------------------
 
 -- ----------------------------
@@ -119,24 +63,54 @@ CREATE TABLE `payment`  (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for product
+-- Table structure for subscriber
 -- ----------------------------
-DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product`  (
-  `product_id` int NOT NULL AUTO_INCREMENT,
-  `product_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `product_price` decimal(10, 2) NULL DEFAULT NULL,
-  `product_quantity` int NULL DEFAULT NULL,
-  `product_quantity_unit` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `product_description` varchar(150) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `product_category_id` int NULL DEFAULT NULL,
-  `product_row_status` tinyint(1) NULL DEFAULT NULL,
-  `product_is_active` tinyint(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`product_id`) USING BTREE
+DROP TABLE IF EXISTS `subscriber`;
+CREATE TABLE `subscriber`  (
+  `subscriber_id` int NOT NULL AUTO_INCREMENT,
+  `subscriber_user_id` int NULL DEFAULT NULL,
+  `subscriber_cargo_id` int NULL DEFAULT NULL,
+  PRIMARY KEY (`subscriber_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of product
+-- Records of subscriber
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user`  (
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_surname` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_email` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_phone_num` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_created_time` datetime NULL DEFAULT NULL,
+  `user_row_status` tinyint(1) NULL DEFAULT NULL,
+  `user_is_active` tinyint(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`user_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for vehicle
+-- ----------------------------
+DROP TABLE IF EXISTS `vehicle`;
+CREATE TABLE `vehicle`  (
+  `vehicle_id` int NOT NULL AUTO_INCREMENT,
+  `vehicle_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`vehicle_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of vehicle
 -- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;
