@@ -66,7 +66,7 @@
 			<img src="<?php echo base_url("assets/dist/img/header-promo.svg"); ?>" alt="" class="w-100 big-image">
 			<div class="position-absolute col-md-12 px-5 pt-3" style="left:0; top:0;">
 				<div class="row">
-					<div class="col-md-6 p-4">
+					<div class="col-md-6 p-4 text-break">
 						<h1 class="display-4" style="color : #333c4e;">60 Dakikada</h1>
 						<h1 class="display-4" style="color : #333c4e;">Teslimat</h1>
 					</div>
