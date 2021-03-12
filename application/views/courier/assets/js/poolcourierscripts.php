@@ -30,7 +30,7 @@
 					data["cargo_volume"]= $("#cargo_volume").val();
 					data["cargo_price>="]= $("#cargo_min_price").val();
 					data["cargo_price<="]= $("#cargo_max_price").val();
-					data["cargo_vehicle"] =$("#cargo_vehicle_id").val();
+					data["cargo_vehicle_id"] =$("#cargo_vehicle").val();
 					data["cargo_adress_from_district_key"] = $("#district").val();
 					/*data.cargo_description = $("#cargo_description").val()
 					data.cargo_weight = $("#cargo_weight").val();
@@ -71,7 +71,6 @@
 			method: "GET",
 			url: "<?php echo base_url() . "courier/Poolcourier/getCityfromApi"?>"
 		}).done(function (data) {
-
 			let decoded_data = JSON.parse(data);
 			//console.log(decoded_data.resultcity.result);
 			decoded_data.resultcity.result.forEach(function (item) {
@@ -98,8 +97,19 @@
 				})
 			} else {
 				$("#district").html("");
-				$("#district").append("<option value='0'>Seçiniz</option>");
+				$("#district").append("<option value='0'>İlçe</option>");
 			}
+		})
+
+
+		$.ajax({
+			method : "GET",
+			url : "<?php echo base_url(); ?>courier/Poolcourier/getVehiclefromApi"
+		}).done(function(data){
+			let decoded_data = JSON.parse(data);
+			decoded_data.resultvehicle.result.forEach(function(item){
+				$("#cargo_vehicle").append("<option value='" + item.vehicle_id + "'>" + item.vehicle_type + "</option>")
+			})
 		})
 	});
 

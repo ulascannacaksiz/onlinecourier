@@ -20,7 +20,6 @@ class Poolcourier extends MY_Controller
 		$this->curly->get($url);
 		$response = $this->curly->getResponse();
 		if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
-			//echo $this->object_to_array($response["response_data"]["resultcity"]);
 			echo $response["response_data"];
 		}
 	}
@@ -37,7 +36,15 @@ class Poolcourier extends MY_Controller
 		$this->curly->post($url,json_encode($rulesforquery));
 		$response = $this->curly->getResponse();
 		if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
-			//echo $this->object_to_array($response["response_data"]["resultcity"]);
+			echo $response["response_data"];
+		}
+	}
+
+	public function getVehiclefromApi(){
+		$url = "http://localhost/onlinecourier_api/GetDb/getVehiclefromDb";
+		$this->curly->get($url);
+		$response = $this->curly->getResponse();
+		if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
 			echo $response["response_data"];
 		}
 	}
@@ -79,7 +86,7 @@ class Poolcourier extends MY_Controller
 				"district as d1" => "d1.ilce_id = cargo.cargo_adress_from_district_key",
 				"district as d2" => "d2.ilce_id = cargo.cargo_adress_to_district_key",
 			),
-			"join_type" => "left",
+			"join_type" => "inner",
 			"is_numeric" => true
 		);
 		$this->curly->post($url, json_encode($rulesforquery));
@@ -138,7 +145,7 @@ class Poolcourier extends MY_Controller
 					"district as d1" => "d1.ilce_id = cargo.cargo_adress_from_district_key",
 					"district as d2" => "d2.ilce_id = cargo.cargo_adress_to_district_key",
 				),
-				"join_type" => "left",
+				"join_type" => "inner",
 				"is_numeric" => null
 			));
 			$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
@@ -171,7 +178,7 @@ class Poolcourier extends MY_Controller
 					"district as d1" => "d1.ilce_id = cargo.cargo_adress_from_district_key",
 					"district as d2" => "d2.ilce_id = cargo.cargo_adress_to_district_key",
 				),
-				"join_type" => "left",
+				"join_type" => "inner",
 				"where" => array(
 					"user_row_status" => 1
 				),
@@ -267,10 +274,5 @@ class Poolcourier extends MY_Controller
 				"ajax_url" => base_url() . "courier/Poolcourier/getDataTableResultfromApi"
 			)
 		);
-	}
-
-	private function object_to_array($object)
-	{
-		return json_decode(json_encode($object), true);
 	}
 }

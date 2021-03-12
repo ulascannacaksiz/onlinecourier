@@ -12,7 +12,7 @@
 					</div>
 					<div class="form-group ml-2">
 						<input type="number" class="form-control" name="cargo_weight" id="cargo_weight"
-							   placeholder="Kargo Ağırlığı">
+							   placeholder="Kargo Ağırlığı" min="1">
 					</div>
 
 					<div class="form-group ml-2">
