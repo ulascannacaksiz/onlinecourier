@@ -17,7 +17,7 @@
 
 					<div class="form-group ml-2">
 						<input type="number" class="form-control" name="cargo_volume" id="cargo_volume"
-							   placeholder="Hacim">
+							   placeholder="Hacim" min="1">
 					</div>
 
 					<div class="form-group ml-2">
@@ -33,8 +33,18 @@
 						</select>
 					</div>
 					<div class="form-group ml-2">
-						<input type="number" class="form-control" name="cargo_price" id="cargo_price"
-							   placeholder="Ücret" min="1">
+						<select name="district" id="district" class="form-control">
+							<option value="0" selected>İlçe</option>
+
+						</select>
+					</div>
+					<div class="form-group ml-2">
+						<input type="number" class="form-control" name="cargo_min_price" id="cargo_min_price"
+							   placeholder="Minimum tutar" min="1">
+					</div>
+					<div class="form-group ml-2">
+						<input type="number" class="form-control" name="cargo_max_price" id="cargo_max_price"
+							   placeholder="Maximum tutar" min="1">
 					</div>
 						<div class="form-group ml-2">
 							<button name="searchbtn" id="searchbtn" class="btn btn-outline-info">

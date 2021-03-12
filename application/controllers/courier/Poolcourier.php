@@ -14,6 +14,34 @@ class Poolcourier extends MY_Controller
 		$this->load->view("layout", $this->data);
 	}
 
+	public function getCityfromApi()
+	{
+		$url = "http://localhost/onlinecourier_api/GetDb/getCityfromDb";
+		$this->curly->get($url);
+		$response = $this->curly->getResponse();
+		if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
+			//echo $this->object_to_array($response["response_data"]["resultcity"]);
+			echo $response["response_data"];
+		}
+	}
+
+	public function getDistrictfromApi()
+	{
+		$url = "http://localhost/onlinecourier_api/GetDb/getDistrictfromDb";
+		$rulesforquery = array(
+			"where" => array(
+				"ilce_sehirkey" => $this->input->post("plaka")
+			),
+			"is_numeric" => null
+		);
+		$this->curly->post($url,json_encode($rulesforquery));
+		$response = $this->curly->getResponse();
+		if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
+			//echo $this->object_to_array($response["response_data"]["resultcity"]);
+			echo $response["response_data"];
+		}
+	}
+
 	public function getDataTableResultfromApi()
 	{
 		$columns = array(
@@ -27,9 +55,9 @@ class Poolcourier extends MY_Controller
 			7 => 'cargo_adress_from_district_key',
 			8 => 'cargo_adress_to_district_key',
 			9 => 'cargo_delivery_time',
-			10=> 'islem'
+			10 => 'islem'
 		);
-    	$limit = $this->input->post('length');
+		$limit = $this->input->post('length');
 		$start = $this->input->post('start');
 		$order = $columns[$this->input->post('order')[0]['column']];
 		$dir = $this->input->post('order')[0]['dir'];
@@ -54,7 +82,7 @@ class Poolcourier extends MY_Controller
 			"join_type" => "left",
 			"is_numeric" => true
 		);
-		$this->curly->post($url,json_encode($rulesforquery));
+		$this->curly->post($url, json_encode($rulesforquery));
 		$response = $this->curly->getResponse();
 		$totalData = 0;
 		$totalFiltered = 0;
@@ -68,13 +96,15 @@ class Poolcourier extends MY_Controller
 
 		$search_table = "cargo";
 		$search_array = array(
-			$search_table."_weight" => "where",
-			$search_table."_description" => "like",
-			$search_table."_volume" => "where",
-			$search_table."_delivery_time" => "where",
-			$search_table."_vehicle_id" => "where",
-			$search_table."_price" => "where",
-			$search_table."_weight_unit" => "where",
+			$search_table . "_weight" => "where",
+			$search_table . "_description" => "like",
+			$search_table . "_volume" => "where",
+			$search_table . "_delivery_time" => "where",
+			$search_table . "_vehicle_id" => "where",
+			$search_table . "_weight_unit" => "where",
+			$search_table . "_adress_from_district_key" => "where",
+			$search_table . "_price>=" => "where",
+			$search_table . "_price<=" => "where"
 		);
 
 		$rulesforquery = array();
@@ -91,8 +121,9 @@ class Poolcourier extends MY_Controller
 					}
 				}
 			}
+			//($rulesforquery);
+			//();
 		}
-
 
 		if (!$is_array_empty) {
 			$rulesforquery = array_merge($rulesforquery, array(
@@ -111,21 +142,21 @@ class Poolcourier extends MY_Controller
 				"is_numeric" => null
 			));
 			$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
-			$this->curly->post($url,json_encode($rulesforquery));
+			$this->curly->post($url, json_encode($rulesforquery));
 			$response = $this->curly->getResponse();
 			if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
 				$decoded_result_data = json_decode($response["response_data"], true);
-				$posts = $decoded_result_data["resultcargo"]["result"];
+				$posts = $decoded_result_data["resultcargo"];
 			}
 			unset($rulesforquery["limit"]);
 			unset($rulesforquery["start"]);
 			$rulesforquery["is_numeric"] = true;
 			$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
-			$this->curly->post($url,json_encode($rulesforquery));
+			$this->curly->post($url, json_encode($rulesforquery));
 			$response = $this->curly->getResponse();
 			if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
 				$decoded_result_data = json_decode($response["response_data"], true);
-				$totalFiltered  = $decoded_result_data;
+				$totalFiltered = $decoded_result_data;
 			}
 		} else {
 			$rulesforquery = array(
@@ -147,32 +178,32 @@ class Poolcourier extends MY_Controller
 				"is_numeric" => null
 			);
 			$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
-			$this->curly->post($url,json_encode($rulesforquery));
+			$this->curly->post($url, json_encode($rulesforquery));
 			$response = $this->curly->getResponse();
 
 			if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
 				$decoded_result_data = json_decode($response["response_data"], true);
-				$posts = $decoded_result_data["resultcargo"]["result"];
+				$posts = $decoded_result_data["resultcargo"];
 
 			}
 		}
 
+		if ($posts["response_code"] == 200) {
+			foreach ($posts["result"] as $result_key => $result) {
+				$nestedData["cargo_id"] = $result["cargo_id"];
+				$nestedData["cargo_user_id"] = $result["user_name"] . " " . $result["user_surname"];
+				$nestedData["cargo_description"] = $result["cargo_description"];
+				$nestedData["cargo_weight"] = $result["cargo_weight"] . " " . $result["cargo_weight_unit"];
+				$nestedData["cargo_volume"] = $result["cargo_volume"];
+				$nestedData["cargo_price"] = $result["cargo_price"];
+				$nestedData["cargo_vehicle_id"] = $result["vehicle_type"];
+				$nestedData["cargo_adress_from_district_key"] = $result["ilce_title_from"];
+				$nestedData["cargo_adress_to_district_key"] = $result["ilce_title_to"];
+				$nestedData["cargo_delivery_time"] = $result["cargo_delivery_time"];
+				$nestedData["islem"] = "<a href='#' class='btn btn-outline-success '>Teslim Et</a>";
 
-		foreach ($posts as $result_key => $result) {
-			$nestedData["cargo_id"] = $result["cargo_id"] ;
-			$nestedData["cargo_user_id"] = $result["user_name"]." ".$result["user_surname"];
-			$nestedData["cargo_description"] = $result["cargo_description"];
-			$nestedData["cargo_weight"] = $result["cargo_weight"]. " ".$result["cargo_weight_unit"] ;
-			$nestedData["cargo_volume"] = $result["cargo_volume"];
-			$nestedData["cargo_price"] = $result["cargo_price"];
-			$nestedData["cargo_vehicle_id"] = $result["vehicle_type"];
-			$nestedData["cargo_adress_from_district_key"] = $result["ilce_title_from"];
-			$nestedData["cargo_adress_to_district_key"] = $result["ilce_title_to"];
-			$nestedData["cargo_delivery_time"] = $result["cargo_delivery_time"];
-			$nestedData["islem"] = "<a href='#' class='btn btn-outline-success '>Teslim Et</a>";
-
-
-			$data[] = $nestedData;
+				$data[] = $nestedData;
+			}
 		}
 
 		$json_data = array(
@@ -233,8 +264,13 @@ class Poolcourier extends MY_Controller
 		//http://localhost/onlinecourier/Poolcourier/getDataTableResultfromApi
 		$this->data[CUSTOM_SCRIPTS] = array(
 			"courier/assets/js/poolcourierscripts" => array(
-				"ajax_url" =>  base_url() . "courier/Poolcourier/getDataTableResultfromApi"
+				"ajax_url" => base_url() . "courier/Poolcourier/getDataTableResultfromApi"
 			)
 		);
+	}
+
+	private function object_to_array($object)
+	{
+		return json_decode(json_encode($object), true);
 	}
 }
