@@ -3,8 +3,11 @@
 		$("#deletebtn").click(function () {
 			$("input[type=text]").val("");
 			$("input[type=number]").val("");
-			$("#vehicle_id").val(0);
-			$("#city").val(0);
+			$("#cargo_vehicle").val(0);
+			$("#city_from").val(0);
+			$("#city_to").val(0);
+			$("#district_from").html("<option value='0'>Çıkış İlçesi</option>");
+			$("#district_to").html("<option value='0'>Varış İlçesi</option>");
 			table.ajax.reload();
 		});
 
@@ -26,12 +29,13 @@
 				"type": "POST",
 				"data": function (data) {
 					data["cargo_description"] = $("#cargo_description").val();
-					data["cargo_weight"]= $("#cargo_weight").val();
-					data["cargo_volume"]= $("#cargo_volume").val();
-					data["cargo_price>="]= $("#cargo_min_price").val();
-					data["cargo_price<="]= $("#cargo_max_price").val();
-					data["cargo_vehicle_id"] =$("#cargo_vehicle").val();
-					data["cargo_adress_from_district_key"] = $("#district").val();
+					data["cargo_weight"] = $("#cargo_weight").val();
+					data["cargo_volume"] = $("#cargo_volume").val();
+					data["cargo_price_min"] = $("#cargo_min_price").val();
+					data["cargo_price_max"] = $("#cargo_max_price").val();
+					data["cargo_vehicle_id"] = $("#cargo_vehicle").val();
+					data["cargo_adress_from_district_key"] = $("#district_from").val();
+					data["cargo_adress_to_district_key"] = $("#district_to").val();
 					/*data.cargo_description = $("#cargo_description").val()
 					data.cargo_weight = $("#cargo_weight").val();
 					data.cargo_volume = $("#cargo_volume").val();
@@ -72,42 +76,62 @@
 			url: "<?php echo base_url() . "courier/Poolcourier/getCityfromApi"?>"
 		}).done(function (data) {
 			let decoded_data = JSON.parse(data);
-			//console.log(decoded_data.resultcity.result);
 			decoded_data.resultcity.result.forEach(function (item) {
-				$("#city").append("<option value='" + item.sehir_key + "'>" + item.sehir_title + "</option>");
+				$("#city_from").append("<option value='" + item.sehir_key + "'>" + item.sehir_title + "</option>");
+				$("#city_to").append("<option value='" + item.sehir_key + "'>" + item.sehir_title + "</option>");
 			})
 
 		})
 
-		$("#city").change(function () {
-			if ($("#city").val() != 0) {
-				$("#district").html("");
+		$("#city_from").change(function () {
+			if ($("#city_from").val() != 0) {
+				$("#district_from").html("<option value='0'>Çıkış İlçesi</option>");
 				$.ajax({
 					method: "POST",
 					url: "<?php echo base_url() . "courier/Poolcourier/getDistrictfromApi"?>",
 					data: {
-						"plaka": $("#city").val()
+						"plaka": $("#city_from").val()
 					}
 				}).done(function (data) {
 					let decoded_data = JSON.parse(data);
 					decoded_data.resultdistrict.result.forEach(function (item) {
-						$("#district").append("<option value='" + item.ilce_id + "'>" + item.ilce_title + "</option>");
+						$("#district_from").append("<option value='" + item.ilce_id + "'>" + item.ilce_title + "</option>");
 					})
 
 				})
 			} else {
-				$("#district").html("");
-				$("#district").append("<option value='0'>İlçe</option>");
+				$("#district_from").html("<option value='0'>Çıkış İlçesi</option>");
+			}
+		})
+
+		$("#city_to").change(function () {
+			if ($("#city_to").val() != 0) {
+				$("#district_to").html("<option value='0'>Varış İlçesi</option>");
+				$.ajax({
+					method: "POST",
+					url: "<?php echo base_url() . "courier/Poolcourier/getDistrictfromApi"?>",
+					data: {
+						"plaka": $("#city_to").val()
+					}
+				}).done(function (data) {
+					let decoded_data = JSON.parse(data);
+					decoded_data.resultdistrict.result.forEach(function (item) {
+						$("#district_to").append("<option value='" + item.ilce_id + "'>" + item.ilce_title + "</option>");
+					})
+
+				})
+			} else {
+				$("#district_to").html("<option value='0'>Varış İlçesi</option>");
 			}
 		})
 
 
 		$.ajax({
-			method : "GET",
-			url : "<?php echo base_url(); ?>courier/Poolcourier/getVehiclefromApi"
-		}).done(function(data){
+			method: "GET",
+			url: "<?php echo base_url(); ?>courier/Poolcourier/getVehiclefromApi"
+		}).done(function (data) {
 			let decoded_data = JSON.parse(data);
-			decoded_data.resultvehicle.result.forEach(function(item){
+			decoded_data.resultvehicle.result.forEach(function (item) {
 				$("#cargo_vehicle").append("<option value='" + item.vehicle_id + "'>" + item.vehicle_type + "</option>")
 			})
 		})

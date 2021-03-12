@@ -27,14 +27,26 @@
 						</select>
 					</div>
 					<div class="form-group ml-2">
-						<select name="city" id="city" class="form-control">
-							<option value="0" selected>Şehir</option>
+						<select name="city_from" id="city_from" class="form-control">
+							<option value="0" selected>Çıkış Şehiri</option>
 
 						</select>
 					</div>
 					<div class="form-group ml-2">
-						<select name="district" id="district" class="form-control">
-							<option value="0" selected>İlçe</option>
+						<select name="district_from" id="district_from" class="form-control">
+							<option value="0" selected>Çıkış İlçesi</option>
+
+						</select>
+					</div>
+					<div class="form-group ml-2">
+						<select name="city_to" id="city_to" class="form-control">
+							<option value="0" selected>Varış Şehiri</option>
+
+						</select>
+					</div>
+					<div class="form-group ml-2">
+						<select name="district_to" id="district_to" class="form-control">
+							<option value="0" selected>Varış İlçesi</option>
 
 						</select>
 					</div>

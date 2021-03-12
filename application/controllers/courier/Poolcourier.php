@@ -27,20 +27,21 @@ class Poolcourier extends MY_Controller
 	public function getDistrictfromApi()
 	{
 		$url = "http://localhost/onlinecourier_api/GetDb/getDistrictfromDb";
-		$rulesforquery = array(
+		$rulesforrequest = array(
 			"where" => array(
 				"ilce_sehirkey" => $this->input->post("plaka")
 			),
 			"is_numeric" => null
 		);
-		$this->curly->post($url,json_encode($rulesforquery));
+		$this->curly->post($url, json_encode($rulesforrequest));
 		$response = $this->curly->getResponse();
 		if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
 			echo $response["response_data"];
 		}
 	}
 
-	public function getVehiclefromApi(){
+	public function getVehiclefromApi()
+	{
 		$url = "http://localhost/onlinecourier_api/GetDb/getVehiclefromDb";
 		$this->curly->get($url);
 		$response = $this->curly->getResponse();
@@ -73,7 +74,7 @@ class Poolcourier extends MY_Controller
 		$data = array();
 		$select = "cargo.*,user.*,vehicle.*,d1.ilce_title as ilce_title_from,d1.ilce_id as ilce_title_from_id,d2.ilce_title as ilce_title_to,d2.ilce_id as ilce_title_to_id";
 		$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
-		$rulesforquery = array(
+		$rulesforrequest = array(
 			"select" => $select,
 			"col" => $order,
 			"dir" => $dir,
@@ -89,7 +90,7 @@ class Poolcourier extends MY_Controller
 			"join_type" => "inner",
 			"is_numeric" => true
 		);
-		$this->curly->post($url, json_encode($rulesforquery));
+		$this->curly->post($url, json_encode($rulesforrequest));
 		$response = $this->curly->getResponse();
 		$totalData = 0;
 		$totalFiltered = 0;
@@ -110,30 +111,38 @@ class Poolcourier extends MY_Controller
 			$search_table . "_vehicle_id" => "where",
 			$search_table . "_weight_unit" => "where",
 			$search_table . "_adress_from_district_key" => "where",
-			$search_table . "_price>=" => "where",
-			$search_table . "_price<=" => "where"
+			$search_table . "_adress_to_district_key" => "where",
+			$search_table . "_price_min" => "where",
+			$search_table . "_price_max" => "where"
 		);
 
-		$rulesforquery = array();
+		$rulesforrequest = array();
 		$search_post_data = $this->input->post();
-		//print_r($search_post_data);
+		$will_be_replaced_arr = array("_min" => ">=", "_max" => "<=");
 		if (!empty($search_post_data)) {
 			foreach ($search_post_data as $key => $value) {
 				if (isset($value) && !empty($value)) {
+					if (is_array($value)) {
+						continue;
+					}
 					foreach ($search_array as $svalue => $skey) {
+						foreach ($will_be_replaced_arr as $wbr_key => $wbr_value) {
+							if (strpos($key, $wbr_key) !== false || strpos($svalue, $wbr_key) !== false) {
+								$key = str_replace($wbr_key, $wbr_value, $key);
+								$svalue = str_replace($wbr_key, $wbr_value, $svalue);
+							}
+						}
 						if ($svalue == $key) {
-							$rulesforquery[$skey][$svalue] = $value;
+							$rulesforrequest[$skey][$svalue] = $value;
 							$is_array_empty = false;
 						}
 					}
 				}
 			}
-			//($rulesforquery);
-			//();
 		}
 
 		if (!$is_array_empty) {
-			$rulesforquery = array_merge($rulesforquery, array(
+			$rulesforrequest = array_merge($rulesforrequest, array(
 				"select" => $select,
 				"limit" => $limit,
 				"start" => $start,
@@ -143,30 +152,30 @@ class Poolcourier extends MY_Controller
 					"user" => "user.user_id = cargo.cargo_user_id",
 					"vehicle" => "vehicle.vehicle_id = cargo.cargo_vehicle_id",
 					"district as d1" => "d1.ilce_id = cargo.cargo_adress_from_district_key",
-					"district as d2" => "d2.ilce_id = cargo.cargo_adress_to_district_key",
+					"district as d2" => "d2.ilce_id = cargo.cargo_adress_to_district_key"
 				),
 				"join_type" => "inner",
 				"is_numeric" => null
 			));
 			$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
-			$this->curly->post($url, json_encode($rulesforquery));
+			$this->curly->post($url, json_encode($rulesforrequest));
 			$response = $this->curly->getResponse();
 			if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
 				$decoded_result_data = json_decode($response["response_data"], true);
 				$posts = $decoded_result_data["resultcargo"];
 			}
-			unset($rulesforquery["limit"]);
-			unset($rulesforquery["start"]);
-			$rulesforquery["is_numeric"] = true;
+			unset($rulesforrequest["limit"]);
+			unset($rulesforrequest["start"]);
+			$rulesforrequest["is_numeric"] = true;
 			$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
-			$this->curly->post($url, json_encode($rulesforquery));
+			$this->curly->post($url, json_encode($rulesforrequest));
 			$response = $this->curly->getResponse();
 			if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
 				$decoded_result_data = json_decode($response["response_data"], true);
 				$totalFiltered = $decoded_result_data;
 			}
 		} else {
-			$rulesforquery = array(
+			$rulesforrequest = array(
 				"select" => $select,
 				"limit" => $limit,
 				"start" => $start,
@@ -185,7 +194,7 @@ class Poolcourier extends MY_Controller
 				"is_numeric" => null
 			);
 			$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
-			$this->curly->post($url, json_encode($rulesforquery));
+			$this->curly->post($url, json_encode($rulesforrequest));
 			$response = $this->curly->getResponse();
 
 			if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
