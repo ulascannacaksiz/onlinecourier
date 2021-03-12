@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-white navbar-light sticky-top shadow p-3 px-5">
+<nav class="navbar navbar-expand navbar-white navbar-light sticky-top shadow p-3 px-3">
 
 	<a class="navbar-brand text-info" href="#" style="color: #A3FFFA; font-family: Helvetica Neue, sans-serif">Online
 		Courier</a>
