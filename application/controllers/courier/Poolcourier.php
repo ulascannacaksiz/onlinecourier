@@ -36,8 +36,10 @@ class Poolcourier extends MY_Controller
 		//echo $order . " ". $dir;
 		$nestedData = array();
 		$data = array();
+		$select = "cargo.*,user.*,vehicle.*,d1.ilce_title as ilce_title_from,d1.ilce_id as ilce_title_from_id,d2.ilce_title as ilce_title_to,d2.ilce_id as ilce_title_to_id";
 		$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
 		$rulesforquery = array(
+			"select" => $select,
 			"col" => $order,
 			"dir" => $dir,
 			"where" => array(
@@ -46,10 +48,10 @@ class Poolcourier extends MY_Controller
 			"join" => array(
 				"user" => "user.user_id = cargo.cargo_user_id",
 				"vehicle" => "vehicle.vehicle_id = cargo.cargo_vehicle_id",
-				"district as d1" => "d1.ilce_id = cargo.cargo_adress_to_district_key",
-				"district as d2" => "d2.ilce_id = cargo.cargo_adress_from_district_key"
+				"district as d1" => "d1.ilce_id = cargo.cargo_adress_from_district_key",
+				"district as d2" => "d2.ilce_id = cargo.cargo_adress_to_district_key",
 			),
-			"join_type" => "inner",
+			"join_type" => "left",
 			"is_numeric" => true
 		);
 		$this->curly->post($url,json_encode($rulesforquery));
@@ -94,6 +96,7 @@ class Poolcourier extends MY_Controller
 
 		if (!$is_array_empty) {
 			$rulesforquery = array_merge($rulesforquery, array(
+				"select" => $select,
 				"limit" => $limit,
 				"start" => $start,
 				"col" => $order,
@@ -101,10 +104,10 @@ class Poolcourier extends MY_Controller
 				"join" => array(
 					"user" => "user.user_id = cargo.cargo_user_id",
 					"vehicle" => "vehicle.vehicle_id = cargo.cargo_vehicle_id",
-					"district as d1" => "d1.ilce_id = cargo.cargo_adress_to_district_key",
-					"district as d2" => "d2.ilce_id = cargo.cargo_adress_from_district_key"
+					"district as d1" => "d1.ilce_id = cargo.cargo_adress_from_district_key",
+					"district as d2" => "d2.ilce_id = cargo.cargo_adress_to_district_key",
 				),
-				"join_type" => "inner",
+				"join_type" => "left",
 				"is_numeric" => null
 			));
 			$url = "http://localhost/onlinecourier_api/GetDb/GetCargofromDb";
@@ -126,6 +129,7 @@ class Poolcourier extends MY_Controller
 			}
 		} else {
 			$rulesforquery = array(
+				"select" => $select,
 				"limit" => $limit,
 				"start" => $start,
 				"col" => $order,
@@ -133,10 +137,10 @@ class Poolcourier extends MY_Controller
 				"join" => array(
 					"user" => "user.user_id = cargo.cargo_user_id",
 					"vehicle" => "vehicle.vehicle_id = cargo.cargo_vehicle_id",
-					"district as d1" => "d1.ilce_id = cargo.cargo_adress_to_district_key",
-					"district as d2" => "d2.ilce_id = cargo.cargo_adress_from_district_key"
+					"district as d1" => "d1.ilce_id = cargo.cargo_adress_from_district_key",
+					"district as d2" => "d2.ilce_id = cargo.cargo_adress_to_district_key",
 				),
-				"join_type" => "inner",
+				"join_type" => "left",
 				"where" => array(
 					"user_row_status" => 1
 				),
@@ -153,6 +157,7 @@ class Poolcourier extends MY_Controller
 			}
 		}
 
+
 		foreach ($posts as $result_key => $result) {
 			$nestedData["cargo_id"] = $result["cargo_id"] ;
 			$nestedData["cargo_user_id"] = $result["user_name"]." ".$result["user_surname"];
@@ -161,8 +166,8 @@ class Poolcourier extends MY_Controller
 			$nestedData["cargo_volume"] = $result["cargo_volume"];
 			$nestedData["cargo_price"] = $result["cargo_price"];
 			$nestedData["cargo_vehicle_id"] = $result["vehicle_type"];
-			$nestedData["cargo_adress_from_district_key"] = $result["ilce_title"];
-			$nestedData["cargo_adress_to_district_key"] = $result["ilce_title"];
+			$nestedData["cargo_adress_from_district_key"] = $result["ilce_title_from"];
+			$nestedData["cargo_adress_to_district_key"] = $result["ilce_title_to"];
 			$nestedData["cargo_delivery_time"] = $result["cargo_delivery_time"];
 			$nestedData["islem"] = "<a href='#' class='btn btn-outline-success '>Teslim Et</a>";
 
