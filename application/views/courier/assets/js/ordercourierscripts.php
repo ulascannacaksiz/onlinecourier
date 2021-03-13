@@ -3,7 +3,8 @@
 		//$('.select2').select2();
 		let isClicked = null;
 		let clicked_btn_val = null;
-
+		let clicked_vechicle_btn_val = null;
+		let price = 0;
 		$("#carbtn").click(function () {
 			if (isClicked == null || isClicked != "car") {
 				if ($("#weight").children().length > 0) {
@@ -66,25 +67,29 @@
 					$(this).attr("class","btn btn-outline-success mx-2 vehicle-weight-btn");
 				}
 			})
+			//console.log(clicked_btn_val);
+			price = clicked_btn_val * 0.75;
+			$("#totalprice").text("Tutar: "+price+" TL");
 			return false;
 		})
 
 		$(document).on("click",".vehicle-type-btn",function (){
-			clicked_btn_val = $(this).val();
+			clicked_vechicle_btn_val = $(this).val();
 			$(".vehicle-type-btn").each(function(){
-				if($(this).val() == clicked_btn_val){
+				if($(this).val() == clicked_vechicle_btn_val){
 					$(this).attr("class","btn btn-success mx-2 vehicle-type-btn");
 				} else {
 					$(this).attr("class","btn btn-outline-success mx-2 vehicle-type-btn");
 				}
 			})
+			//console.log(clicked_vechicle_btn_val);
 			return false;
 		})
 
 
 		$("#chooseDate").click(function () {
 			$(this).attr("class", "btn btn-success btn-lg");
-			$("#date").html('<label>Teslim tarihi</label><input type="date" name="kargotarih" class="form-control">');
+			$("#date").html('<label>Teslim tarihi</label><input type="date" id="kargotarih" name="kargotarih" class="form-control">');
 		})
 
 		$.ajax({
@@ -140,21 +145,22 @@
 			}
 		})
 
-		$(".phone").inputmask({"mask": "(999) 999-9999"});
-
 		$("#orderfrom").submit(function () {
 			let orderformdata = $("#orderfrom").serialize();
-			orderformdata += "&kilo=" + clicked_btn_val;
+			orderformdata += "&kilo=" + clicked_btn_val+"&cargo_vehicle_id="+clicked_vechicle_btn_val+"&cargo_price="+price+"&kargotarih="+$("#kargotarih").val();
 			//console.log(orderformdata);
 			$.ajax({
 				method:"POST",
 				url:"<?php echo base_url('courier/Ordercourier/saveToApi')?>",
 				data:orderformdata,
 			}).done(function(data){
-				console.log(data);
+				//console.log(data);
+				window.location = "<?php echo base_url('courier/Poolcourier');?>";
 			})
 			return false;
 		});
+
+		$(".phone").inputmask({"mask": "(999) 999-9999"});
 
 	})
 </script>

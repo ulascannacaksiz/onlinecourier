@@ -22,15 +22,37 @@
 	<!-- /.login-logo -->
 	<div class="card card-outline card-primary">
 		<div class="card-header text-center">
-			<a href="" class="h1"><b>SCADA-</b>TRS</a>
+			<a href="" class="h1"><b>Online-</b>Courier</a>
 		</div>
 		<div class="card-body">
 			<div id="resultval" class="alert alert-danger" style="display:none; text-align: center;"></div>
 
 
-			<p class="login-box-msg"><?php echo $this->lang->line("SignIn in to start your session") ?></p>
+			<p class="login-box-msg">Kayıt olmak için eksiksiz doldurun.</p>
 
 			<form action="" method="post" id="signform">
+
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" name="name"
+						   placeholder="İsim">
+					<div class="input-group-append">
+						<div class="input-group-text">
+							<span class="fas fa-user"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" name="surname"
+						   placeholder="Soyisim">
+					<div class="input-group-append">
+						<div class="input-group-text">
+							<span class="fas fa-user"></span>
+						</div>
+					</div>
+				</div>
+
+
 				<div class="input-group mb-3">
 					<input type="email" class="form-control" name="email"
 						   placeholder="Email">
@@ -40,6 +62,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="input-group mb-3">
 					<input type="password" class="form-control" name="password"
 						   placeholder="Şifre">
@@ -49,13 +72,32 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" name="phonenum">
+					<div class="input-group-append">
+						<div class="input-group-text">
+							<span class="fas fa-phone"></span>
+						</div>
+					</div>
+				</div>
+
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" name="address" placeholder="Adres">
+					<div class="input-group-append">
+						<div class="input-group-text">
+							<span class="fas fa-map-marked-alt"></span>
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-8">
 					</div>
 					<!-- /.col -->
 					<div class="col-4">
 						<button type="submit"
-								class="btn btn-primary btn-block">Giriş yap</button>
+								class="btn btn-primary btn-block">Kayıt Ol
+						</button>
 					</div>
 					<!-- /.col -->
 				</div>
@@ -71,6 +113,7 @@
 
 <!-- /.login-box -->
 <script src="<?php echo base_url("assets/dist/js/jquery-3.5.1.min.js") ?>"></script>
+<script src="<?php echo base_url( "assets/dist/js/jquery.inputmask.bundle.js") ?>"></script>
 <!-- jQuery -->
 <script src="<?php echo base_url("assets/plugins/jquery/jquery.min.js") ?>"></script>
 <!-- SELECT 2 -->
@@ -79,8 +122,6 @@
 <script src="<?php echo base_url("assets/plugins/bootstrap/js/bootstrap.bundle.min.js") ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url("assets/dist/js/adminlte.min.js") ?>"></script>
-</body>
-</html>
 <script>
 	$(function () {
 
@@ -88,7 +129,7 @@
 		$("#signform").submit(function () {
 			$.ajax({
 				method: "POST",
-				url: "<?php echo base_url("sign/SignIn/requestfromAjax");?>",
+				url: "<?php echo base_url("sign/SignUp/requestfromAjax");?>",
 				data: $("#signform").serialize(),
 			}).done(function (msg) {
 				//console.log(msg);
@@ -96,11 +137,16 @@
 					$("#resultval").show();
 					$("#resultval").html(msg);
 				} else {
-					window.location = "<?php echo base_url('maincontrol/Home/HomeControl');?>";
+					window.location = "<?php echo base_url('sign/SignIn');?>";
 				}
 			});
 			return false;
 		})
 
+		//$(".phone").inputmask({"mask": "(999) 999-9999"});
+
 	});
 </script>
+</body>
+</html>
+

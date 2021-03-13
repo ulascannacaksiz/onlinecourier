@@ -7,9 +7,9 @@ class SignIn extends CI_Controller
 		parent::__construct();
 	}
 
-	public function load($data)
+	public function index()
 	{
-		$this->load->view("sign/signin",$data);
+		$this->load->view("sign/signin");
 	}
 
 	public function requestfromAjax()
@@ -39,9 +39,12 @@ class SignIn extends CI_Controller
 			$this->curly->post($url,json_encode($rulesforrequest));
 			$response = $this->curly->getResponse();
 			if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
-				if ($response["response_data"]["resultuser"]["result"][0]->user_row_status == 1 &&
-					print_r($response["response_data"]["resultuser"]["result"][0]->user_is_active == 1)) {
-					//$this->call_to_create_session($response["response_data"]["resultuser"]["result"]);
+				$response_arr = json_decode($response["response_data"],true);
+				if ($response_arr["resultuser"]["result"][0]["user_row_status"] == 1 &&
+					$response_arr["resultuser"]["result"][0]["user_is_active"] == 1) {
+					//print_r($response_arr["resultuser"]["result"][0]);
+					$this->call_to_create_session($response_arr["resultuser"]["result"][0]);
+					echo "refresh";
 				} else {
 					echo "Error: You are banned";
 				}
@@ -49,5 +52,20 @@ class SignIn extends CI_Controller
 				echo "Error: Email or password is incorrect";
 			}
 		}
+	}
+
+	private function call_to_create_session($data){
+		$this->data["session_array"] = array(
+			'user_id' => $data["user_id"],
+			'name' => $data["user_name"],
+			'surname' => $data["user_surname"],
+			'email' => $data["user_email"],
+			'phone_num' => $data["user_phone_num"],
+			"login_status" => 1,
+			"user_row_status" => $data["user_row_status"],
+			"user_is_active" => $data["user_is_active"]
+		);
+
+		$this->session->set_userdata($this->data["session_array"]);
 	}
 }

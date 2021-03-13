@@ -103,19 +103,19 @@
 			<div class="row text-center">
 				<div class="col-md-3 ">
 					<img src="<?php echo base_url("assets/dist/img/car.svg"); ?>" class="w-50">
-					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Arabalı Kurye</button>
+					<a href="<?php echo base_url("courier/Ordercourier/")?>" class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Arabalı Kurye</a>
 				</div>
 				<div class="col-md-3">
 					<img src="<?php echo base_url("assets/dist/img/motorbike.svg"); ?>" class="w-50">
-					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Motor Kurye</button>
+					<a href="<?php echo base_url("courier/Ordercourier/")?>" class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Motor Kurye</a>
 				</div>
 				<div class="col-md-3">
 					<img src="<?php echo base_url("assets/dist/img/walk.svg"); ?>" class="w-50">
-					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Yaya Kurye</button>
+					<a href="<?php echo base_url("courier/Ordercourier/")?>" class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Yaya Kurye</a>
 				</div>
 				<div class="col-md-3">
 					<img src="<?php echo base_url("assets/dist/img/truck.png"); ?>" class="w-50">
-					<button class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Kamyon Kurye</button>
+					<a href="<?php echo base_url("courier/Ordercourier/")?>" class="btn btn-outline-success btn-md col-md-6 d-block mx-auto">Kamyon Kurye</a>
 				</div>
 			</div>
 		</div>

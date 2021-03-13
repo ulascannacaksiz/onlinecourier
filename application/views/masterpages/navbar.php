@@ -4,8 +4,19 @@
 		Courier</a>
 
 	<ul class="navbar-nav ml-auto">
-		<li class="nav-item">
-			<button class="nav-link btn btn-outline-primary" ><i class="fas fa-people-carry"></i> Hemen Gönder !</button>
+		<?php if($this->session->userdata("login_status")!=1){?>
+		<li class="nav-item mx-2">
+			<a href="<?php echo base_url("sign/SignIn")?>" class="nav-link btn btn-outline-info" ><i class="fas fa-user-lock"></i> Giriş Yap !</a>
+		</li>
+		<li class="nav-item mx-2">
+			<a href="#" class="nav-link btn btn-outline-info" ><i class="fas fa-user-plus"></i> Kayıt Ol !</a>
+		</li>
+		<?php }else{
+			echo '
+			<li class="nav-item mx-2">'."Hoş Geldin ".$this->session->userdata("name") ." ".$this->session->userdata("surname").'</li>';
+	}?>
+		<li class="nav-item mx-2">
+			<a href="<?php echo base_url("courier/Ordercourier/")?>" class="nav-link btn btn-outline-primary" ><i class="fas fa-people-carry"></i> Hemen Gönder !</a>
 		</li>
 	</ul>
 </nav>

@@ -79,7 +79,7 @@ class Poolcourier extends MY_Controller
 			"col" => $order,
 			"dir" => $dir,
 			"where" => array(
-				"cargo_row_status" => 1
+				"cargo_status" => 0
 			),
 			"join" => array(
 				"user" => "user.user_id = cargo.cargo_user_id",
@@ -189,7 +189,7 @@ class Poolcourier extends MY_Controller
 				),
 				"join_type" => "inner",
 				"where" => array(
-					"user_row_status" => 1
+					"cargo_status" => 0
 				),
 				"is_numeric" => null
 			);
@@ -216,7 +216,7 @@ class Poolcourier extends MY_Controller
 				$nestedData["cargo_adress_from_district_key"] = $result["ilce_title_from"];
 				$nestedData["cargo_adress_to_district_key"] = $result["ilce_title_to"];
 				$nestedData["cargo_delivery_time"] = $result["cargo_delivery_time"];
-				$nestedData["islem"] = "<a href='#' class='btn btn-outline-success '>Teslim Et</a>";
+				$nestedData["islem"] = "<a href='".base_url("courier/Cargodetail/index/").$result["cargo_id"]."' class='btn btn-outline-success '>Teslim Et</a>";
 
 				$data[] = $nestedData;
 			}

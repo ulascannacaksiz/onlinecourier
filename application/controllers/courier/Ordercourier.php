@@ -46,10 +46,7 @@ class Ordercourier extends MY_Controller{
 	public function saveToApi(){
 		$url = "http://localhost/onlinecourier_api/SaveDb/saveSearchCargoInfoToApi";
 		$parameters_to_send = $this->input->post();
-		$rulesforrequest = array(
-			"insert" => $parameters_to_send,
-			"is_numeric" => null
-		);
+		$rulesforrequest = $parameters_to_send;
 		$this->curly->post($url,json_encode($rulesforrequest));
 		$response = $this->curly->getResponse();
 		//echo json_encode($rulesforrequest);
@@ -76,7 +73,6 @@ class Ordercourier extends MY_Controller{
 		);
 
 		$this->data[CUSTOM_STYLES] = array(
-			base_url() . "assets/dist/css/home.css",
 			base_url() . "assets/dist/css/footer.css"
 		);
 

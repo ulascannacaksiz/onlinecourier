@@ -22,13 +22,13 @@
 	<!-- /.login-logo -->
 	<div class="card card-outline card-primary">
 		<div class="card-header text-center">
-			<a href="" class="h1"><b>SCADA-</b>TRS</a>
+			<a href="" class="h1"><b>Online-</b>Courier</a>
 		</div>
 		<div class="card-body">
 			<div id="resultval" class="alert alert-danger" style="display:none; text-align: center;"></div>
 
 
-			<p class="login-box-msg"><?php echo $this->lang->line("SignIn in to start your session") ?></p>
+			<p class="login-box-msg">Oturum Açmak İçin Giriş Yapın</p>
 
 			<form action="" method="post" id="signform">
 				<div class="input-group mb-3">
@@ -91,12 +91,12 @@
 				url: "<?php echo base_url("sign/SignIn/requestfromAjax");?>",
 				data: $("#signform").serialize(),
 			}).done(function (msg) {
-				//console.log(msg);
+				console.log(msg);
 				if (msg !== "refresh") {
 					$("#resultval").show();
 					$("#resultval").html(msg);
 				} else {
-					window.location = "<?php echo base_url('maincontrol/Home/HomeControl');?>";
+					window.location = "<?php echo base_url('homepage/Home');?>";
 				}
 			});
 			return false;
