@@ -18,6 +18,12 @@
 		<li class="nav-item mx-2">
 			<a href="<?php echo base_url("courier/Ordercourier/")?>" class="nav-link btn btn-outline-primary" ><i class="fas fa-people-carry"></i> Hemen Gönder !</a>
 		</li>
+		<?php if($this->session->userdata("login_status")==1){?>
+			<li class="nav-item mx-2">
+			<a href="<?php echo base_url("sessioncontrol/SessionControl/destroy_session")?>" class="nav-link btn btn-outline-danger" > Çıkış</a>
+		</li>
+		<?php } ?>
+
 	</ul>
 </nav>
 
