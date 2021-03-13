@@ -11,6 +11,59 @@ class Ordercourier extends MY_Controller{
 		$this->load->view("layout",$this->data);
 	}
 
+	public function getCityfromApi()
+	{
+		$url = "http://localhost/onlinecourier_api/GetDb/getCityfromDb";
+		$this->curly->get($url);
+		$response = $this->curly->getResponse();
+		if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
+			echo $response["response_data"];
+		}
+	}
+
+	public function getDistrictAjaxfromApi()
+	{
+		$ilce_sehirkey = $this->input->post();
+		$this->getDistrictfromApi($ilce_sehirkey);
+	}
+
+	public function getDistrictfromApi($ilce_sehirkey)
+	{
+		$url = "http://localhost/onlinecourier_api/GetDb/getDistrictfromDb";
+		$rulesforrequest = array(
+			"where" => array(
+				"ilce_sehirkey" => $ilce_sehirkey
+			),
+			"is_numeric" => null
+		);
+		$this->curly->post($url, json_encode($rulesforrequest));
+		$response = $this->curly->getResponse();
+		if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
+			echo $response["response_data"];
+		}
+	}
+
+	public function saveToApi(){
+		$url = "http://localhost/onlinecourier_api/SaveDb/saveSearchCargoInfoToApi";
+		$parameters_to_send = $this->input->post();
+		$rulesforrequest = array(
+			"insert" => $parameters_to_send,
+			"is_numeric" => null
+		);
+		$this->curly->post($url,json_encode($rulesforrequest));
+		$response = $this->curly->getResponse();
+		//echo json_encode($rulesforrequest);
+		if ($response["response_code"] >= 200 && $response["response_code"] < 300) {
+			echo $response["response_data"];
+		}
+		//$this->input->post()
+		//print_r($this->input->post());
+
+
+
+	}
+
+
 	private function onLoad(){
 		$this->data[HEADER_STYLES] = array(
 			base_url() . "assets/plugins/fontawesome-free/css/all.min.css",

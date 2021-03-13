@@ -7,7 +7,8 @@
 			<div class="col-md-12">
 				<div class="d-flex justify-content-center my-2">
 					<div class="mx-2">
-						<button class="btn btn-outline-success btn-lg">
+						<form id="orderfrom" method="post" action="">
+						<button type="button" class="btn btn-outline-success btn-lg">
 							<div class="d-flex align-items-center">
 								<i class="fas fa-running"></i>
 								<span class="mx-2">En Kısa Sürede</span>
@@ -15,7 +16,7 @@
 						</button>
 					</div>
 					<div class="mx-2">
-						<button class="btn btn-outline-success btn-lg">
+						<button type="button" class="btn btn-outline-success btn-lg" id="chooseDate">
 							<div class="d-flex align-items-center">
 								<i class="far fa-clock"></i>
 								<span class="mx-2">Belirtilen Zamanda</span>
@@ -28,13 +29,13 @@
 				</div>
 				<div class="d-flex justify-content-center">
 					<div class="mx-2">
-						<button class="btn btn-outline-success btn-md" id="carbtn"><i class="fas fa-car-side"></i> Araba</button>
+						<button class="btn btn-outline-success btn-md vehicle-type-btn" id="carbtn"><i class="fas fa-car-side"></i> Araba</button>
 					</div>
 					<div class="mx-2">
-						<button class="btn btn-outline-success btn-md" id="motorbtn"><i class="fas fa-motorcycle"></i> Motor</button>
+						<button class="btn btn-outline-success btn-md vehicle-type-btn" id="motorbtn"><i class="fas fa-motorcycle"></i> Motor</button>
 					</div>
 					<div class="mx-2">
-						<button class="btn btn-outline-success btn-md" id="truckbtn"><i class="fas fa-truck"></i> Kamyon</button>
+						<button class="btn btn-outline-success btn-md vehicle-type-btn" id="truckbtn"><i class="fas fa-truck"></i> Kamyon</button>
 					</div>
 
 				</div>
@@ -45,19 +46,26 @@
 							<label>Çıkış Adresi</label>
 							<br>
 							<label>İsim</label>
-							<input type="text" class="form-control" placeholder="İsim">
+							<input type="text" class="form-control" name="gonderici_isim" placeholder="İsim">
 							<label>Soyisim</label>
-							<input type="text" class="form-control" placeholder="Soyisim">
+							<input type="text" class="form-control" name="gonderici_soyisim" placeholder="Soyisim">
 							<label>Numara</label>
-							<input type="text" class="form-control phone" placeholder="Numara">
+							<input type="text" class="form-control phone" name="gonderici_numara" placeholder="Numara">
 							<label>Adres</label>
+							<select class="form-control mb-3" name="cikis_il" id="city_from">
+								<option value="0">İl</option>
+							</select>
+							<select class="form-control mb-3" name="cikis_ilce" id="district_from">
+								<option value="0">İlçe</option>
+							</select>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><i
 												class="fas fa-map-marker-alt"></i></span>
 								</div>
-								<input type="text" class="form-control" placeholder="Çıkış Adresi...">
+								<input type="text" class="form-control" name="gonderici_adres" placeholder="Çıkış Adresi...">
 							</div>
+							<span id="date" class="col-md-12 "></span>
 						</div>
 					</div>
 				</div>
@@ -67,18 +75,25 @@
 							<label>Varış Adresi</label>
 							<br>
 							<label>İsim</label>
-							<input type="text" class="form-control" placeholder="İsim">
+							<input type="text" class="form-control" name="alici_soyisim" placeholder="İsim">
 							<label>Soyisim</label>
-							<input type="text" class="form-control" placeholder="Soyisim">
+							<input type="text" class="form-control" name="alici_soyisim" placeholder="Soyisim">
 							<label>Numara</label>
-							<input type="text" class="form-control phone" placeholder="Numara">
+							<input type="text" class="form-control phone" name="alici_numara" placeholder="Numara">
 							<label>Adres</label>
+							<label>Adres</label>
+							<select class="form-control mb-3" name="varis_il" id="city_to">
+								<option value="0">İl</option>
+							</select>
+							<select class="form-control mb-3" name="varis_ilce" id="district_to">
+								<option value="0">İlçe</option>
+							</select>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1"><i
 												class="fas fa-map-marker-alt"></i></span>
 								</div>
-								<input type="text" class="form-control" placeholder="Varış Adresi..."
+								<input type="text" class="form-control" name="alici_adres" placeholder="Varış Adresi..."
 									   aria-label="Username"
 									   aria-describedby="basic-addon1">
 							</div>
@@ -89,14 +104,15 @@
 					<div class="card">
 						<div class="card-body">
 							<label>Gönderi İçeriği</label>
-							<input type="text" class="form-control" placeholder="Gönderi İçeriği">
+							<input type="text" class="form-control" name="gonderi_icerik" placeholder="Gönderi İçeriği">
 						</div>
 					</div>
 				</div>
 				<div class="col-md-8 mx-auto">
-					<button class="btn btn-outline-success">Gönderi Oluştur</button>
-					<div class=""></div>
+					<button type="submit" class="btn btn-outline-success" id="gondersave">Gönderi Oluştur</button>
+
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>

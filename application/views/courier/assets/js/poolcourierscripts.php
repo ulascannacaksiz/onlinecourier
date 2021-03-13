@@ -88,7 +88,7 @@
 				$("#district_from").html("<option value='0'>Çıkış İlçesi</option>");
 				$.ajax({
 					method: "POST",
-					url: "<?php echo base_url() . "courier/Poolcourier/getDistrictfromApi"?>",
+					url: "<?php echo base_url() . "courier/Poolcourier/getDistrictAjaxfromApi"?>",
 					data: {
 						"plaka": $("#city_from").val()
 					}
@@ -109,7 +109,7 @@
 				$("#district_to").html("<option value='0'>Varış İlçesi</option>");
 				$.ajax({
 					method: "POST",
-					url: "<?php echo base_url() . "courier/Poolcourier/getDistrictfromApi"?>",
+					url: "<?php echo base_url() . "courier/Poolcourier/getDistrictAjaxfromApi"?>",
 					data: {
 						"plaka": $("#city_to").val()
 					}
