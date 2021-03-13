@@ -9,7 +9,7 @@
 			<a href="<?php echo base_url("sign/SignIn")?>" class="nav-link btn btn-outline-info" ><i class="fas fa-user-lock"></i> Giriş Yap !</a>
 		</li>
 		<li class="nav-item mx-2">
-			<a href="#" class="nav-link btn btn-outline-info" ><i class="fas fa-user-plus"></i> Kayıt Ol !</a>
+			<a href="<?php echo base_url("sign/SignUp")?>" class="nav-link btn btn-outline-info" ><i class="fas fa-user-plus"></i> Kayıt Ol !</a>
 		</li>
 		<?php }else{
 			echo '

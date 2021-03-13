@@ -4,6 +4,7 @@
 		let isClicked = null;
 		let clicked_btn_val = null;
 		let clicked_vechicle_btn_val = null;
+		let clicked_time_btn_val = null;
 		let price = 0;
 		$("#carbtn").click(function () {
 			if (isClicked == null || isClicked != "car") {
@@ -67,7 +68,7 @@
 					$(this).attr("class","btn btn-outline-success mx-2 vehicle-weight-btn");
 				}
 			})
-			//console.log(clicked_btn_val);
+
 			price = clicked_btn_val * 0.75;
 			$("#totalprice").text("Tutar: "+price+" TL");
 			return false;
@@ -82,13 +83,26 @@
 					$(this).attr("class","btn btn-outline-success mx-2 vehicle-type-btn");
 				}
 			})
-			//console.log(clicked_vechicle_btn_val);
+
+			return false;
+		})
+
+		$(document).on("click",".select_time",function (){
+			clicked_time_btn_val = $(this).val();
+			$(".select_time").each(function(){
+				if($(this).val() == clicked_time_btn_val){
+					$(this).attr("class","btn btn-success btn-lg mx-2 select_time");
+				} else {
+					$(this).attr("class","btn btn-outline-success btn-lg mx-2 select_time");
+				}
+			})
+
 			return false;
 		})
 
 
 		$("#chooseDate").click(function () {
-			$(this).attr("class", "btn btn-success btn-lg");
+
 			$("#date").html('<label>Teslim tarihi</label><input type="date" id="kargotarih" name="kargotarih" class="form-control">');
 		})
 

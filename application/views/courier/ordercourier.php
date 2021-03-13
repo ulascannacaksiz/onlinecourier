@@ -8,7 +8,7 @@
 				<div class="d-flex justify-content-center my-2">
 					<div class="mx-2">
 						<form id="orderfrom" method="post" action="">
-							<button type="button" class="btn btn-outline-success btn-lg">
+							<button type="button" class="btn btn-outline-success btn-lg select_time" value="time1">
 								<div class="d-flex align-items-center">
 									<i class="fas fa-running"></i>
 									<span class="mx-2">En Kısa Sürede</span>
@@ -16,7 +16,7 @@
 							</button>
 					</div>
 					<div class="mx-2">
-						<button type="button" class="btn btn-outline-success btn-lg" id="chooseDate">
+						<button type="button" class="btn btn-outline-success btn-lg select_time" id="chooseDate"  value="time2">
 							<div class="d-flex align-items-center">
 								<i class="far fa-clock"></i>
 								<span class="mx-2">Belirtilen Zamanda</span>
